@@ -107,18 +107,37 @@ function Login() {
           </Link>
         </p>
 
-        <div className="grid grid-cols-2 gap-3 mb-5">
-          <button onClick={comingSoon} className="border border-white/30 rounded-lg py-2 text-sm">
-            <FcGoogle size={18} /> Google
+         <div className="grid grid-cols-2 gap-3 mb-5">
+          <button
+            onClick={comingSoon}
+            className="flex items-center justify-center gap-2 border border-white/30 rounded-lg py-2 text-sm"
+          >
+            <FcGoogle size={18} />
+            Continue with Google
           </button>
-          <button onClick={comingSoon} className="border border-white/30 rounded-lg py-2 text-sm">
-            <FaApple size={18} /> Apple
+
+          <button
+            onClick={comingSoon}
+            className="flex items-center justify-center gap-2 border border-white/30 rounded-lg py-2 text-sm"
+          >
+            <FaApple size={18} />
+            Continue with Apple
           </button>
-          <button onClick={comingSoon} className="border border-white/30 rounded-lg py-2 text-sm">
-            <FaFacebookF size={18} className="text-blue-500" /> Facebook
+
+          <button
+            onClick={comingSoon}
+            className="flex items-center justify-center gap-2 border border-white/30 rounded-lg py-2 text-sm"
+          >
+            <FaFacebookF size={18} className="text-blue-500" />
+            Continue with Facebook
           </button>
-          <button onClick={comingSoon} className="border border-white/30 rounded-lg py-2 text-sm">
-            <FaTwitter size={18} /> Twitter
+
+          <button
+            onClick={comingSoon}
+            className="flex items-center justify-center gap-2 border border-white/30 rounded-lg py-2 text-sm"
+          >
+            <FaTwitter size={18} />
+            Continue with Twitter
           </button>
         </div>
       </div>
