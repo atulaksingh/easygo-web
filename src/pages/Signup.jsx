@@ -4,7 +4,7 @@ import axios from "axios";
 import bg from "../assets/login-bg.jpg";
 import { FcGoogle } from "react-icons/fc";
 import { FaApple, FaFacebookF, FaTwitter } from "react-icons/fa";
-
+const API = process.env.REACT_APP_API_BASE_URL;
 export default function Signup() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -31,7 +31,7 @@ export default function Signup() {
       setLoading(true);
 
       await axios.post(
-        "https://easygo-backend-project.vercel.app/api/v1/admin/registration",
+        `${API}/admin/registration`,
         {
           fullName: email.split("@")[0],
           mobileNumber: "9999999999",

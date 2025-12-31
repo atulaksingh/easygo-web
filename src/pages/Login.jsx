@@ -5,6 +5,8 @@ import axios from "axios";
 import { FcGoogle } from "react-icons/fc";
 import { FaApple, FaFacebookF, FaTwitter } from "react-icons/fa";
 
+const API = process.env.REACT_APP_API_BASE_URL;
+
 function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -24,13 +26,14 @@ function Login() {
     try {
       setLoading(true);
 
-      const res = await axios.post(
-        "https://easygo-backend-project.vercel.app/api/v1/admin/login",
-        { email, password }
-      );
-      console.log(res.data);
+      const res = await axios.post(`${API}/admin/login`, {
+        email,
+        password,
+      });
+
       localStorage.setItem("token", res.data.data);
       localStorage.setItem("user", JSON.stringify(res.data.responseObj));
+
       navigate("/home");
     } catch (err) {
       alert(err.response?.data?.message || "Login failed");
@@ -68,13 +71,14 @@ function Login() {
         </label>
         <input
           type="email"
-          placeholder="example@gmail.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="w-full mb-4 h-11 px-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-primary"
         />
 
-        <label className="text-sm text-gray-300 mb-2 block">Password</label>
+        <label className="text-sm text-gray-300 mb-2 block">
+          Password
+        </label>
         <input
           type="password"
           value={password}
@@ -98,53 +102,25 @@ function Login() {
 
         <p className="text-center text-sm text-gray-300 mb-5">
           Don’t have an account?{" "}
-          <Link
-            to="/signup"
-            className="text-primary font-semibold hover:underline"
-          >
+          <Link to="/signup" className="text-primary font-semibold hover:underline">
             Sign up
           </Link>
         </p>
 
         <div className="grid grid-cols-2 gap-3 mb-5">
-          <button
-            onClick={comingSoon}
-            className="flex items-center justify-center gap-2 border border-white/30 rounded-lg py-2 text-sm"
-          >
-            <FcGoogle size={18} />
-            Continue with Google
+          <button onClick={comingSoon} className="border border-white/30 rounded-lg py-2 text-sm">
+            <FcGoogle size={18} /> Google
           </button>
-
-          <button
-            onClick={comingSoon}
-            className="flex items-center justify-center gap-2 border border-white/30 rounded-lg py-2 text-sm"
-          >
-            <FaApple size={18} />
-            Continue with Apple
+          <button onClick={comingSoon} className="border border-white/30 rounded-lg py-2 text-sm">
+            <FaApple size={18} /> Apple
           </button>
-
-          <button
-            onClick={comingSoon}
-            className="flex items-center justify-center gap-2 border border-white/30 rounded-lg py-2 text-sm"
-          >
-            <FaFacebookF size={18} className="text-blue-500" />
-            Continue with Facebook
+          <button onClick={comingSoon} className="border border-white/30 rounded-lg py-2 text-sm">
+            <FaFacebookF size={18} className="text-blue-500" /> Facebook
           </button>
-
-          <button
-            onClick={comingSoon}
-            className="flex items-center justify-center gap-2 border border-white/30 rounded-lg py-2 text-sm"
-          >
-            <FaTwitter size={18} />
-            Continue with Twitter
+          <button onClick={comingSoon} className="border border-white/30 rounded-lg py-2 text-sm">
+            <FaTwitter size={18} /> Twitter
           </button>
         </div>
-
-        <p className="text-xs text-gray-400 text-center">
-          By proceeding further you agree to our{" "}
-          <span className="text-white">Terms & conditions</span> and{" "}
-          <span className="text-white">Privacy policy</span>
-        </p>
       </div>
     </div>
   );
